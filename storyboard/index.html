@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Objects – Storyboard</title>
+  <link rel="stylesheet" href="css/storyboard.css">
+</head>
+<body>
+  <header class="toolbar no-print">
+    <span class="toolbar-title">Storyboard editor</span>
+    <div class="toolbar-actions">
+      <button id="add-shot">+ Add shot</button>
+      <button id="toggle-prompts">Hide AI prompts</button>
+      <button id="export-json">Save file</button>
+      <label class="button">Open file<input id="import-json" type="file" accept="application/json" hidden></label>
+      <button id="reset">Reset example</button>
+      <button id="print" class="primary">Print / PDF</button>
+    </div>
+  </header>
+
+  <main class="sheet">
+    <section class="intro">
+      <p class="eyebrow">Virtual Objects · Week 2 · Storyboard milestone</p>
+      <h1 id="project-title" contenteditable="true" data-field="title"></h1>
+      <p class="meta"><span contenteditable="true" data-field="author"></span> · <span contenteditable="true" data-field="date"></span></p>
+      <h2>Ideas, intentions and aims</h2>
+      <p id="description" class="description" contenteditable="true" data-field="description"></p>
+    </section>
+
+    <section id="shots" class="shots" aria-label="Shots"></section>
+
+    <section class="strip" aria-label="Thumbnail strip">
+      <h2>Sequence overview</h2>
+      <ol id="strip"></ol>
+    </section>
+  </main>
+
+  <template id="shot-template">
+    <article class="shot">
+      <div class="frame" tabindex="0" title="Click or drop an image">
+        <img alt="">
+        <div class="frame-empty">
+          <span>Drop image / click to upload</span>
+        </div>
+        <input type="file" accept="image/*" hidden>
+      </div>
+      <div class="shot-head">
+        <span class="shot-num"></span>
+        <h3 contenteditable="true" data-key="name"></h3>
+      </div>
+      <p class="shot-desc" contenteditable="true" data-key="description"></p>
+      <dl class="shot-specs">
+        <div><dt>Shot</dt><dd contenteditable="true" data-key="framing"></dd></div>
+        <div><dt>Camera</dt><dd contenteditable="true" data-key="camera"></dd></div>
+        <div><dt>Time</dt><dd contenteditable="true" data-key="duration"></dd></div>
+        <div><dt>Sound / text</dt><dd contenteditable="true" data-key="audio"></dd></div>
+      </dl>
+      <details class="prompt">
+        <summary>AI image prompt</summary>
+        <p contenteditable="true" data-key="prompt"></p>
+        <button class="copy-prompt no-print" type="button">Copy prompt</button>
+      </details>
+      <div class="shot-controls no-print">
+        <button data-action="left" title="Move earlier">←</button>
+        <button data-action="right" title="Move later">→</button>
+        <button data-action="clear-image" title="Remove image">Clear image</button>
+        <button data-action="delete" title="Delete shot">Delete</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="js/storyboard.js"></script>
+</body>
+</html>
